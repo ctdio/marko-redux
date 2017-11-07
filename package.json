@@ -4,5 +4,22 @@
   "description": "Redux bindings for marko",
   "main": "src/index.js",
   "author": "Charlie Duong",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlieduong94/marko-redux.git"
+  },
+  "keywords": [
+    "marko",
+    "redux",
+    "marko-redux",
+    "bindings"
+  ],
+  "bugs": {
+    "url": "https://github.com/charlieduong94/marko-redux/issues"
+  },
+  "homepage": "https://github.com/charlieduong94/marko-redux#readme"
 }
