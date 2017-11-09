@@ -2,7 +2,14 @@ const storeRegistry = require('./storeRegistry')
 
 const DEFAULT_STORE_ID = '___default_store____'
 
-function _wrapOnCreate (storeId, mapStateToInput, mapDispatchToComponent, onCreate) {
+function _wrapOnCreate (options, onCreate) {
+  const {
+    storeId,
+    mapStateToInput,
+    mapDispatchToInput,
+    mapDispatchToComponent
+  } = options
+
   return function wrappedOnCreate (input) {
     const store = storeRegistry.getStore(storeId)
 
@@ -11,15 +18,27 @@ function _wrapOnCreate (storeId, mapStateToInput, mapDispatchToComponent, onCrea
     this.__unsubscribeToStore = store.subscribe(() => {
       const input = this.input
       // handle updates
-      Object.assign(input, mapStateToInput(store.getState()))
+      if (mapStateToInput) {
+        Object.assign(input, mapStateToInput(store.getState()))
+      }
+
+      // apply dispatch functions to input
+      if (mapDispatchToInput) {
+        Object.assign(input, mapDispatchToInput(dispatch))
+      }
+
       this.onInput(input)
     })
 
     // apply current state to the input of onCreate
-    Object.assign(input, mapStateToInput(store.getState()))
+    if (mapStateToInput) {
+      Object.assign(input, mapStateToInput(store.getState()))
+    }
 
-    // apply dispatch functions to the component for use
-    Object.assign(this, mapDispatchToComponent(dispatch))
+    if (mapDispatchToComponent) {
+      // apply dispatch functions to the component for use
+      Object.assign(this, mapDispatchToComponent(dispatch))
+    }
 
     if (onCreate) {
       onCreate.call(this, input)
@@ -27,12 +46,26 @@ function _wrapOnCreate (storeId, mapStateToInput, mapDispatchToComponent, onCrea
   }
 }
 
-function _wrapOnInput (storeId, mapStateToInput, onInput) {
+function _wrapOnInput (options, onInput) {
+  const {
+    storeId,
+    mapStateToInput,
+    mapDispatchToInput
+  } = options
+
   return function wrappedOnInput (input) {
     const store = storeRegistry.getStore(storeId)
+    const { dispatch } = store
 
     // apply current state to input
-    Object.assign(input, mapStateToInput(store.getState()))
+    if (mapStateToInput) {
+      Object.assign(input, mapStateToInput(store.getState()))
+    }
+
+    // apply dispatch functions to input
+    if (mapDispatchToInput) {
+      Object.assign(input, mapDispatchToInput(dispatch))
+    }
 
     if (onInput) {
       onInput.call(this, input)
@@ -44,21 +77,28 @@ function _wrapOnInput (storeId, mapStateToInput, onInput) {
  * Higher order function for creating a function
  * for wrapping a marko component
  */
-function connect (mapStateToInput, mapDispatchToComponent, options = {}) {
+function connect (connectOptions) {
+  const {
+    mapStateToInput,
+    mapDispatchToInput,
+    mapDispatchToComponent,
+    options = {}
+  } = connectOptions
+
   const storeId = options.storeId || DEFAULT_STORE_ID
 
-  const wrapCreateFunction = _wrapOnCreate.bind(
-    null,
+  const wrapCreateFunction = _wrapOnCreate.bind(null, {
     storeId,
     mapStateToInput,
+    mapDispatchToInput,
     mapDispatchToComponent
-  )
+  })
 
-  const wrapInputFunction = _wrapOnInput.bind(
-    null,
+  const wrapInputFunction = _wrapOnInput.bind(null, {
     storeId,
-    mapStateToInput
-  )
+    mapStateToInput,
+    mapDispatchToInput
+  })
 
   return function wrapComponentDefinition (componentDef) {
     const definition = typeof componentDef === 'function' ?
