@@ -1,6 +1,6 @@
 {
   "name": "marko-redux",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Redux bindings for marko",
   "main": "src/index.js",
   "author": "Charlie Duong",
