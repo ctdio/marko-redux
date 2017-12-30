@@ -13,17 +13,35 @@ is subject to change.
 npm i marko-redux
 ```
 
-### API
+### Why `marko-redux`?
 
-This module exposes a `provider` component and a
+Because I like `marko` and I like `redux`. `redux` is view layer agnostic,
+well supported, easy to learn, and easy to test. `react-redux` makes
+using `redux` easy, it removes the boilerplate and pain of having to pass down stores
+to all components to that care. This module aims to do the same for `marko`.
+
+
+### Why not `marko-redux`?
+
+Depending on the scope of your application, you might not even need `marko-redux`.
+Apps with relatively simple state will do fine using only a root component's local state.
+The `SAV Architecture` described
+[here](https://github.com/marko-js-samples/todomvc-marko-lasso-express#the-sav-architecture)
+will also manage state just fine for small apps that require a little more structure.
+[This blog post](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367)
+should help explain things.
+
+### The API
+
+This module exposes a `<provider>` component and a
 `connect` function for integrating with `redux`.
 
 ##### `<provider>`
 
-The `provider` component is a wrapper component that should used at
+The `<provider>` component is a wrapper component that should used at
 the root of an application. It is used to pass down the input `redux store`
 to all components defined using the `connect` function.
-A `redux store` can be passed to it via the `store` attribute.
+A `store` can be passed to it via the `store` attribute.
 
 Example Usage:
 ```marko
@@ -31,13 +49,17 @@ provider store=input.store
   // other components go here
 ```
 
+Much like how `redux` recommends only having a single
+`store` in your application, you should only have a single `<provider>`
+(_beware:_ using more than one can end up causing unexpected behavior).
+
 ##### `connect(connectOptions)`
 
-`connect` is a higher order function for binding your `store` to your components.
+`connect` is a higher order function for binding your `store` to your container components.
 A `store` can be passed down to connected components via the `provider` component
 (as explained above).
 The function accepts a single argument, an object containing
-information about how you want the store to interact with the container.
+information about how you want the `store` to interact with the container.
 
 Here are the available fields you can specify for `connectOptions`:
 - `mapStateToInput(state)` - a function expecting the store's `state` to be passed in as the first argument.
@@ -58,6 +80,8 @@ for `redux` to be used in full effect.
 to a component's definition.
 
 That function accepts the component definition as the only argument.
+
+It is recommended that `connected` components
 
 Example usage:
 ```js
@@ -135,12 +159,12 @@ provider store=input.store
 
 ### How it works
 
-The `provider` attaches the input `store` to the async `out` object that is used
+The `<provider>` attaches the input `store` to the async `out` object that is used
 by `marko` to render components for the first time. Components defined with
 the `connect` function will pull the store from `out`.
 
 `connect` wraps the component's `onCreate`, `onInput`, and `onDestroy` methods,
-to allow for the `redux store` to be bound to the component (via the provider component).
+to allow for the `redux store` to be bound to the component (via the `<provider>` component).
 If `mapDispatchToComponent` is provided, then the functions exposed by it will be
 mapped to the component's definition.
 

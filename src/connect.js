@@ -1,3 +1,5 @@
+const STORE_ID = '___marko_redux_store___'
+
 function _wrapOnCreate (options, onCreate) {
   const {
     mapStateToInput,
@@ -7,7 +9,7 @@ function _wrapOnCreate (options, onCreate) {
 
   return function wrappedOnCreate (input, out) {
     // pull store from provider component
-    const { store } = out.data
+    const store = input.store || out.global[STORE_ID]
 
     if (!store) {
       throw new Error('Unable to retrieve store. Make sure ' +
@@ -34,7 +36,9 @@ function _wrapOnCreate (options, onCreate) {
         Object.assign(input, mapDispatchToInput(dispatch))
       }
 
-      this.onInput(input)
+      if (this.onInput) {
+        this.onInput(input)
+      }
     })
 
     // apply current state to the input of onCreate
@@ -116,7 +120,9 @@ function connect (connectOptions) {
 
     definition.onDestroy = function () {
       this.__unsubscribeStore()
-      onDestroy.call(this)
+      if (onDestroy) {
+        onDestroy.call(this)
+      }
     }
 
     return componentDef
