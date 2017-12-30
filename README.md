@@ -15,47 +15,28 @@ npm i marko-redux
 
 ### API
 
-`marko-redux` exposes a few functions to facilitate the use of `redux` in your project.
-At the moment, there are only two functions exposed by the module, `registerStore` and `connect`.
+This module exposes a `provider` component and a
+`connect` function for integrating with `redux`.
 
-##### `registerStore(store [, storeId])`
+##### `<provider>`
 
-The `registerStore` function is what is used to link your `redux` store to your _container components_.
-If you are not familiar the concept of container components and presentational components,
-check out [this article](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
-(many concepts from `react` carry over to `marko` nicely 😄).
+The `provider` component is a wrapper component that should used at
+the root of an application. It is used to pass down the input `redux store`
+to all components defined using the `connect` function.
+A `redux store` can be passed to it via the `store` attribute.
 
-Your `redux` store is the first argument that is passed to the function. Additionally, you can pass in a
-`storeId` as the second argument if needed. The `storeId` can be used when calling the `connect` function
-to specify _which_ data store to use (if your application has multiple stores). If not specified,
-a default `storeId` will be used to register the store.
-
-Example usage:
-
-```js
-// application entry point
-const { createStore } = require('redux')
-const { registerStore } = require('marko-redux')
-const App = require('./containers/app')
-
-const reducers = require('./reducers')
-
-const store = createStore(reducers)
-
-// register the store before rendering
-registerStore(store)
-
-// render the app here
-const containerEl = document.getElementById('app')
-
-App.renderSync()
-  .appendTo(containerEl)
+Example Usage:
+```marko
+provider store=input.store
+  // other components go here
 ```
 
 ##### `connect(connectOptions)`
 
-`connect` is a higher order function for binding your store to your components.
-The function only accepts a single argument, an object containing
+`connect` is a higher order function for binding your `store` to your components.
+A `store` can be passed down to connected components via the `provider` component
+(as explained above).
+The function accepts a single argument, an object containing
 information about how you want the store to interact with the container.
 
 Here are the available fields you can specify for `connectOptions`:
@@ -94,7 +75,7 @@ class CounterContainer {
   onCreate (input) {
     // initialize container's state
     this.state = {
-      count: input.count
+      count: input.count // derived from store's state
     }
   }
 
@@ -103,7 +84,7 @@ class CounterContainer {
   // the template defined by this container
   // is updated based on changes to the redux store
   onInput (input) {
-    this.state.count = input.count
+    this.state.count = input.count // derived from store state
   }
 }
 
@@ -144,13 +125,22 @@ button onClick('increment') -- increment
 button onClick('decrement') -- decrement
 ```
 
+The root component using the container:
+
+```marko
+// provider will pass down store to counter-container
+provider store=input.store
+  counter-container
+```
+
 ### How it works
 
-The _store_ that is created by `redux` is placed in a simple registry managed
-under the hood by `marko-redux` via the `registerStore` function.
+The `provider` attaches the input `store` to the async `out` object that is used
+by `marko` to render components for the first time. Components defined with
+the `connect` function will pull the store from `out`.
 
 `connect` wraps the component's `onCreate`, `onInput`, and `onDestroy` methods,
-to allow for the redux store to be bound to the component.
+to allow for the `redux store` to be bound to the component (via the provider component).
 If `mapDispatchToComponent` is provided, then the functions exposed by it will be
 mapped to the component's definition.
 
@@ -165,16 +155,3 @@ When a dispatch function sends out an action and the store's state changes, the 
 react to the change.
 
 When the component is destroyed, it is subsequently unsubscribed from the `redux` store.
-
-### Differences from `react-redux`
-
-- No `Provider` component for automatically passing down your store to all child components.
-    - `marko` currently does not have the concept of _context_ that can be passed downwards.
-    At the moment, this is handled by using `registerStore`.
-- No support for server side rendering (yet).
-    - Since there's no support for context that trickles to all child components,
-      there's no good way to allow for stores to be passed downwards without
-      using `registerStore`, which has side effects that are not ideal
-      for server side rendering. This can be circumvented by just manually
-      passing down the store to all of the components that need it (with some tweaks
-      to `marko-redux`)

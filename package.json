@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/charlieduong94/marko-redux/issues"
   },
-  "homepage": "https://github.com/charlieduong94/marko-redux#readme"
+  "homepage": "https://github.com/charlieduong94/marko-redux#readme",
+  "dependencies": {
+    "marko": "^4.7.4"
+  }
 }

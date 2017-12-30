@@ -1,22 +1,29 @@
-const storeRegistry = require('./storeRegistry')
-
-const DEFAULT_STORE_ID = '___default_store____'
-
 function _wrapOnCreate (options, onCreate) {
   const {
-    storeId,
     mapStateToInput,
     mapDispatchToInput,
     mapDispatchToComponent
   } = options
 
-  return function wrappedOnCreate (input) {
-    const store = storeRegistry.getStore(storeId)
+  return function wrappedOnCreate (input, out) {
+    // pull store from provider component
+    const { store } = out.data
+
+    if (!store) {
+      throw new Error('Unable to retrieve store. Make sure ' +
+        'that connected components are being wrapped by a <provider> ' +
+        'and that the store is being properly passed in. ' +
+        'Ex: <provider store=input.store> CONTENTS HERE </provider>')
+    }
 
     const { dispatch } = store
 
-    this.__unsubscribeToStore = store.subscribe(() => {
+    // add store to component for later usage
+    this.__store = store
+
+    this.__unsubscribeStore = store.subscribe(() => {
       const input = this.input
+
       // handle updates
       if (mapStateToInput) {
         Object.assign(input, mapStateToInput(store.getState()))
@@ -41,21 +48,22 @@ function _wrapOnCreate (options, onCreate) {
     }
 
     if (onCreate) {
-      onCreate.call(this, input)
+      onCreate.call(this, input, out)
     }
   }
 }
 
 function _wrapOnInput (options, onInput) {
   const {
-    storeId,
     mapStateToInput,
     mapDispatchToInput
   } = options
 
-  return function wrappedOnInput (input) {
-    const store = storeRegistry.getStore(storeId)
+  return function wrappedOnInput (input, out) {
+    const store = this.__store
     const { dispatch } = store
+
+    input.store = store
 
     // apply current state to input
     if (mapStateToInput) {
@@ -68,7 +76,7 @@ function _wrapOnInput (options, onInput) {
     }
 
     if (onInput) {
-      onInput.call(this, input)
+      onInput.call(this, input, out)
     }
   }
 }
@@ -85,17 +93,13 @@ function connect (connectOptions) {
     options = {}
   } = connectOptions
 
-  const storeId = options.storeId || DEFAULT_STORE_ID
-
   const wrapCreateFunction = _wrapOnCreate.bind(null, {
-    storeId,
     mapStateToInput,
     mapDispatchToInput,
     mapDispatchToComponent
   })
 
   const wrapInputFunction = _wrapOnInput.bind(null, {
-    storeId,
     mapStateToInput,
     mapDispatchToInput
   })
