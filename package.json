@@ -2,10 +2,11 @@
   "name": "marko-redux",
   "version": "0.1.0",
   "description": "Redux bindings for marko",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "author": "Charlie Duong",
   "license": "MIT",
   "scripts": {
+    "transpile": "babel src --out-dir lib --copy-files",
     "test": "nyc ava --verbose"
   },
   "repository": {
@@ -25,15 +26,21 @@
   "dependencies": {
     "marko": "^4.7.4"
   },
-  "ava": {
-    "files": [
-      "./test/**/*.test.js"
-    ]
-  },
   "devDependencies": {
     "ava": "^0.24.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
     "enzo": "^1.0.2",
     "nyc": "^11.4.1",
     "redux": "^3.7.2"
+  },
+  "ava": {
+    "files": [
+      "./test/**/*.test.js"
+    ],
+    "require": [
+      "babel-register"
+    ]
   }
 }
