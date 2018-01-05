@@ -36,14 +36,17 @@ function _wrapOnCreate (options, onCreate) {
         Object.assign(input, mapDispatchToInput(dispatch))
       }
 
-      if (this.onInput) {
-        this.onInput(input)
-      }
+      this.onInput(input)
     })
 
     // apply current state to the input of onCreate
     if (mapStateToInput) {
       Object.assign(input, mapStateToInput(store.getState()))
+    }
+
+    // apply dispatch functions to input
+    if (mapDispatchToInput) {
+      Object.assign(input, mapDispatchToInput(dispatch))
     }
 
     if (mapDispatchToComponent) {
@@ -93,8 +96,7 @@ function connect (connectOptions) {
   const {
     mapStateToInput,
     mapDispatchToInput,
-    mapDispatchToComponent,
-    options = {}
+    mapDispatchToComponent
   } = connectOptions
 
   const wrapCreateFunction = _wrapOnCreate.bind(null, {
