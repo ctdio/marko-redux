@@ -13,9 +13,9 @@ test.beforeEach((t) => {
 test('should accept a class', (t) => {
   const { store } = t.context
 
-  const onCreateStub = sinon.stub();
-  const onInputStub = sinon.stub();
-  const onDestroyStub = sinon.stub();
+  const onCreateStub = sinon.stub()
+  const onInputStub = sinon.stub()
+  const onDestroyStub = sinon.stub()
 
   const input = { store }
   const out = {}

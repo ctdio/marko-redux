@@ -111,9 +111,9 @@ function connect (connectOptions) {
   })
 
   return function wrapComponentDefinition (componentDef) {
-    const definition = typeof componentDef === 'function' ?
-      componentDef.prototype :
-      componentDef
+    const definition = typeof componentDef === 'function'
+      ? componentDef.prototype
+      : componentDef
 
     const { onCreate, onInput, onDestroy } = definition
 

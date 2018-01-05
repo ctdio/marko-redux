@@ -1,5 +1,4 @@
 const test = require('ava')
-const sinon = require('sinon')
 
 const { createStore } = require('redux')
 const connect = require('../../../src/connect')
@@ -15,7 +14,7 @@ test.beforeEach((t) => {
 test('should throw error if store is not ' +
 'passed to connected component via input or out.global', (t) => {
   const componentDef = connect({})({})
-  const error = t.throws(() => componentDef.onCreate({}, { global: {}}))
+  const error = t.throws(() => componentDef.onCreate({}, { global: {} }))
 
   t.true(error.message.includes('Unable to retrieve store'))
 })

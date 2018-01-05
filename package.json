@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "transpile": "babel src --out-dir lib --copy-files",
+    "pretest": "standard | snazzy",
     "test": "nyc ava --verbose"
   },
   "repository": {
@@ -33,7 +34,9 @@
     "babel-register": "^6.26.0",
     "enzo": "^1.0.2",
     "nyc": "^11.4.1",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.3"
   },
   "ava": {
     "files": [

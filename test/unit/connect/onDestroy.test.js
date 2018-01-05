@@ -13,8 +13,8 @@ test.beforeEach((t) => {
 test('should unsubscribe store upon destroy', (t) => {
   const { store } = t.context
   const unsubscribeStub = sinon.stub()
-  const subscribeStub = sinon.stub(store, 'subscribe')
-    .returns(unsubscribeStub);
+  sinon.stub(store, 'subscribe')
+    .returns(unsubscribeStub)
 
   const newComponentDef = connect({})({})
 
@@ -28,7 +28,7 @@ test('should unsubscribe store upon destroy', (t) => {
 
 test('should call original onDestroy if exists', (t) => {
   const { store } = t.context
-  const onDestroyStub = sinon.stub();
+  const onDestroyStub = sinon.stub()
 
   const newComponentDef = connect({})({ onDestroy: onDestroyStub })
 

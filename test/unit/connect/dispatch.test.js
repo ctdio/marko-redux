@@ -14,7 +14,6 @@ test.beforeEach((t) => {
 
 test('should call mapStateToInput on dispatch', (t) => {
   const { store } = t.context
-  const onInputStub = sinon.stub()
 
   const mapStateToInputStub = sinon.stub()
     .callsFake((state) => ({ count: state }))

@@ -4,8 +4,6 @@ const sinon = require('sinon')
 const { createStore } = require('redux')
 const connect = require('../../../src/connect')
 
-const STORE_ID = '___marko_redux_store___'
-
 const defaultState = { count: 25 }
 
 function reducer (state = defaultState) {
@@ -64,8 +62,6 @@ test('should subscribe store upon create', (t) => {
 
 test('should add the store to the component', (t) => {
   const { store } = t.context
-
-  const storeSpy = sinon.spy(store, 'subscribe')
 
   const newComponentDef = connect({})({})
   newComponentDef.onCreate({ store })

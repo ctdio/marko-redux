@@ -14,7 +14,7 @@ const appPath =
   require.resolve('./fixtures/components/test-app/index.marko')
 
 test.beforeEach(async (t) => {
-  const reducer = combineReducers({ count: countReducer  })
+  const reducer = combineReducers({ count: countReducer })
   const store = createStore(reducer)
 
   const { component: app } = await mount(appPath, { store })
@@ -51,7 +51,7 @@ test('counter should react to store changes', (t) => {
 
 test('counter should have access to dispatch functions ' +
 'via mapDispatchToInput', (t) => {
-  const { counter, store } = t.context
+  const { counter } = t.context
   let currentCount = counter.state.count
 
   // increment
@@ -73,7 +73,7 @@ test('counter should have access to dispatch functions ' +
 
 test('counter should have access to dispatch functions ' +
 'via mapDispatchToComponent', (t) => {
-  const { counter, store } = t.context
+  const { counter } = t.context
   let currentCount = counter.state.count
 
   // increment
