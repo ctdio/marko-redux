@@ -1,4 +1,6 @@
 
 {
-  "tags-dir": [ "./integration/connect/fixtures/components" ]
+  "tags-dir": [
+    "./integration/connect/fixtures/components"
+  ]
 }

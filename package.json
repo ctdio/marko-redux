@@ -8,7 +8,8 @@
   "scripts": {
     "transpile": "babel src --out-dir lib --copy-files",
     "pretest": "standard | snazzy",
-    "test": "nyc ava --verbose"
+    "test": "yarn transpile && nyc ava --verbose",
+    "prepack": "yarn transpile"
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,11 @@
     ],
     "require": [
       "babel-register"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "/lib"
     ]
   }
 }
