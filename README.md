@@ -4,9 +4,6 @@ Simple [redux](https://redux.js.org/) bindings for [marko](https://github.com/ma
 inspired by [react-redux](https://github.com/reactjs/react-redux). You check out an example
 project [here](https://github.com/charlieduong94/marko-redux-example).
 
-**NOTE:** This module is still under development, the API is _not_ stable yet and
-is subject to change.
-
 ### Installation
 
 ```bash
@@ -17,9 +14,8 @@ npm i marko-redux
 
 Because I like `marko` and I like `redux`. `redux` is view layer agnostic,
 well supported, easy to learn, and easy to test. `react-redux` makes
-using `redux` easy, it removes the boilerplate and pain of having to pass down stores
-to all components to that care. This module aims to do the same for `marko`.
-
+using `redux` easy, it removes the boilerplate and pain of having to pass down your store
+to all components to that care about it. This module aims to do the same for `marko`.
 
 ### Why not `marko-redux`?
 
