@@ -1,8 +1,9 @@
 # marko-redux
 
 Simple [redux](https://redux.js.org/) bindings for [marko](https://github.com/markojs/marko),
-inspired by [react-redux](https://github.com/reactjs/react-redux). You check out an example
-project [here](https://github.com/charlieduong94/marko-redux-example).
+inspired by [react-redux](https://github.com/reactjs/react-redux). You check out some example
+projects [here](https://github.com/charlieduong94/marko-redux-example) and
+[here](https://github.com/charlieduong94/marko-redux-lasso-serverside-render-example).
 
 ### Installation
 
