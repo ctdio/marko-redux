@@ -1,5 +1,8 @@
 # marko-redux
 
+[![Build Status](https://travis-ci.org/charlieduong94/marko-redux.svg?branch=master)](https://travis-ci.org/charlieduong94/marko-redux)
+[![Coverage Status](https://coveralls.io/repos/github/charlieduong94/marko-redux/badge.svg?branch=master)](https://coveralls.io/github/charlieduong94/marko-redux?branch=master)
+
 Simple [redux](https://redux.js.org/) bindings for [marko](https://github.com/markojs/marko),
 inspired by [react-redux](https://github.com/reactjs/react-redux). You check out some example
 projects [here](https://github.com/charlieduong94/marko-redux-example) and

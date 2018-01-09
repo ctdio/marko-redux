@@ -3,3 +3,4 @@ node_modules/
 .enzo/
 .nyc_output/
 lib/
+*.DS_Store
