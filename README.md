@@ -1,5 +1,7 @@
 # marko-redux
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/charlieduong94/marko-redux.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/charlieduong94/marko-redux.svg?branch=greenkeeper%2Finitial)](https://travis-ci.org/charlieduong94/marko-redux)
 [![Coverage Status](https://coveralls.io/repos/github/charlieduong94/marko-redux/badge.svg?branch=travis)](https://coveralls.io/github/charlieduong94/marko-redux?branch=travis)
 
