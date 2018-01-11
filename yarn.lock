@@ -627,7 +627,7 @@ babel-plugin-syntax-exponentiation-operator@^6.8.0:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-exponentiation-operator/-/babel-plugin-syntax-exponentiation-operator-6.13.0.tgz#9ee7e8337290da95288201a6a57f4170317830de"
 
-babel-plugin-syntax-object-rest-spread@^6.13.0:
+babel-plugin-syntax-object-rest-spread@^6.13.0, babel-plugin-syntax-object-rest-spread@^6.8.0:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-object-rest-spread/-/babel-plugin-syntax-object-rest-spread-6.13.0.tgz#fd6536f2bce13836ffa3a5458c4903a597bb3bf5"
 
@@ -818,6 +818,13 @@ babel-plugin-transform-exponentiation-operator@^6.22.0, babel-plugin-transform-e
     babel-helper-builder-binary-assignment-operator-visitor "^6.24.1"
     babel-plugin-syntax-exponentiation-operator "^6.8.0"
     babel-runtime "^6.22.0"
+
+babel-plugin-transform-object-rest-spread@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-object-rest-spread/-/babel-plugin-transform-object-rest-spread-6.26.0.tgz#0f36692d50fef6b7e2d4b3ac1478137a963b7b06"
+  dependencies:
+    babel-plugin-syntax-object-rest-spread "^6.8.0"
+    babel-runtime "^6.26.0"
 
 babel-plugin-transform-regenerator@^6.22.0:
   version "6.26.0"
@@ -1910,13 +1917,13 @@ enhanced-resolve@^3.4.0:
     object-assign "^4.0.1"
     tapable "^0.2.7"
 
-enzo@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/enzo/-/enzo-1.0.2.tgz#2b0cd4f2da12f2a7918e43de2fd4fb33564ccec5"
+enzo@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/enzo/-/enzo-1.0.3.tgz#731ee88c3e66df7cbe117b743bac272f4faa8915"
   dependencies:
+    babel-polyfill "^6.26.0"
     css-loader "^0.28.7"
     jsdom "^11.5.1"
-    marko "^4.7.1"
     marko-loader "^1.3.2"
     pify "^3.0.0"
     sinon "^4.1.3"
@@ -3536,7 +3543,7 @@ marko-loader@^1.3.2:
   dependencies:
     loader-utils "^1.0.3"
 
-marko@^4.7.1, marko@^4.7.4:
+marko@^4.7.4:
   version "4.7.4"
   resolved "https://registry.yarnpkg.com/marko/-/marko-4.7.4.tgz#7f6ed200cb0934dc6bd8b345093d91846dd13133"
   dependencies:

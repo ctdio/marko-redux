@@ -9,6 +9,7 @@
     "transpile": "babel src --out-dir lib --copy-files",
     "pretest": "standard | snazzy",
     "test": "yarn transpile && nyc ava --verbose",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "prepack": "yarn transpile"
   },
   "repository": {
@@ -31,15 +32,17 @@
   "devDependencies": {
     "ava": "^0.24.0",
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
-    "enzo": "^1.0.2",
+    "enzo": "^1.0.3",
     "nyc": "^11.4.1",
     "redux": "^3.7.2",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3"
   },
   "ava": {
+    "babel": "inherit",
     "files": [
       "./test/**/*.test.js"
     ],
