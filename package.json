@@ -39,7 +39,7 @@
     "nyc": "^11.4.1",
     "redux": "^3.7.2",
     "snazzy": "^7.0.0",
-    "standard": "^10.0.3"
+    "standard": "^11.0.0"
   },
   "ava": {
     "babel": "inherit",
