@@ -30,7 +30,7 @@
     "marko": "^4.7.4"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
+    "ava": "^2.1.0",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
