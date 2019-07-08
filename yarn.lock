@@ -1325,6 +1325,10 @@ camelcase@^4.0.0, camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
+camelcase@^5.0.0:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
+
 caniuse-api@^1.5.2:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/caniuse-api/-/caniuse-api-1.6.1.tgz#b534e7c734c4f81ec5fbe8aca2ad24354b962c6c"
@@ -1600,9 +1604,15 @@ commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
 
-complain@^1.0.0, complain@^1.2.0:
+complain@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/complain/-/complain-1.2.0.tgz#85964a2d95ac785d95b004a85dfac8d378293532"
+  dependencies:
+    error-stack-parser "^2.0.1"
+
+complain@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/complain/-/complain-1.6.0.tgz#e8a1ff3f7dc03ff2b396b4b3e27af35236a3c25c"
   dependencies:
     error-stack-parser "^2.0.1"
 
@@ -3069,9 +3079,9 @@ html-encoding-sniffer@^1.0.1:
   dependencies:
     whatwg-encoding "^1.0.1"
 
-htmljs-parser@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/htmljs-parser/-/htmljs-parser-2.3.2.tgz#1cc5bf9824a091c28820b33eaf78083a8eaa856c"
+htmljs-parser@^2.6.7:
+  version "2.6.8"
+  resolved "https://registry.yarnpkg.com/htmljs-parser/-/htmljs-parser-2.6.8.tgz#cce8237aea2b3141dc69cc282f3920f51079fa3f"
   dependencies:
     char-props "^0.1.5"
     complain "^1.0.0"
@@ -3968,15 +3978,16 @@ marko-loader@^1.3.2:
   dependencies:
     loader-utils "^1.0.3"
 
-marko@^4.7.4:
-  version "4.7.4"
-  resolved "https://registry.yarnpkg.com/marko/-/marko-4.7.4.tgz#7f6ed200cb0934dc6bd8b345093d91846dd13133"
+marko@^4.18.7:
+  version "4.18.7"
+  resolved "https://registry.yarnpkg.com/marko/-/marko-4.18.7.tgz#48d5ae670d810366e7d8706972656178d382d3dd"
   dependencies:
     app-module-path "^2.2.0"
     argly "^1.0.0"
     browser-refresh-client "^1.0.0"
+    camelcase "^5.0.0"
     char-props "~0.1.5"
-    complain "^1.2.0"
+    complain "^1.6.0"
     deresolve "^1.1.2"
     escodegen "^1.8.1"
     esprima "^4.0.0"
@@ -3984,7 +3995,7 @@ marko@^4.7.4:
     events "^1.0.2"
     events-light "^1.0.0"
     he "^1.1.0"
-    htmljs-parser "^2.3.2"
+    htmljs-parser "^2.6.7"
     lasso-caching-fs "^1.0.1"
     lasso-modules-client "^2.0.4"
     lasso-package-root "^1.0.1"
@@ -4002,7 +4013,7 @@ marko@^4.7.4:
     simple-sha1 "^2.1.0"
     strip-json-comments "^2.0.1"
     try-require "^1.2.1"
-    warp10 "^1.0.0"
+    warp10 "^2.0.1"
 
 matcher@^1.0.0:
   version "1.0.0"
@@ -6337,9 +6348,9 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-warp10@^1.0.0:
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/warp10/-/warp10-1.3.6.tgz#edffff4f06382d2e469ba88ccfcb95bb81d3bda6"
+warp10@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/warp10/-/warp10-2.0.1.tgz#a21936d53f152a6003ce49bae85c8758c54c3d2c"
 
 watchpack@^1.4.0:
   version "1.4.0"
