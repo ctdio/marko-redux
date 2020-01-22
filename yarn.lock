@@ -1325,6 +1325,11 @@ camelcase@^4.0.0, camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
+camelcase@^5.0.0:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
+  integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
+
 caniuse-api@^1.5.2:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/caniuse-api/-/caniuse-api-1.6.1.tgz#b534e7c734c4f81ec5fbe8aca2ad24354b962c6c"
@@ -1600,9 +1605,16 @@ commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
 
-complain@^1.0.0, complain@^1.2.0:
+complain@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/complain/-/complain-1.2.0.tgz#85964a2d95ac785d95b004a85dfac8d378293532"
+  dependencies:
+    error-stack-parser "^2.0.1"
+
+complain@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/complain/-/complain-1.6.0.tgz#e8a1ff3f7dc03ff2b396b4b3e27af35236a3c25c"
+  integrity sha512-9oBfSEfxveaNmo2eSp/vEPkaBVxUhiJTZVgGYayzBchSAXQM6CK1PAQeV5ICShnSgfT+biYzrN7egKwwX+HkCw==
   dependencies:
     error-stack-parser "^2.0.1"
 
@@ -2438,6 +2450,11 @@ estraverse@^4.0.0, estraverse@^4.1.0, estraverse@^4.1.1, estraverse@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-4.2.0.tgz#0dee3fed31fcd469618ce7342099fc1afa0bdb13"
 
+estraverse@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-4.3.0.tgz#398ad3f3c5a24948be7725e83d11a7de28cdbd1d"
+  integrity sha512-39nnKffWz8xN1BU/2c79n9nB9HDzo0niYUqx6xyqUnyoAnQyyWpOTdZEeiCch8BBu515t4wp9ZmgVfVhn9EBpw==
+
 esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
@@ -2455,7 +2472,7 @@ events-light@^1.0.0:
   dependencies:
     chai "^3.5.0"
 
-events@^1.0.0, events@^1.0.2:
+events@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/events/-/events-1.1.1.tgz#9ebdb7635ad099c70dcc4c2a1f5004288e8bd924"
 
@@ -3069,9 +3086,10 @@ html-encoding-sniffer@^1.0.1:
   dependencies:
     whatwg-encoding "^1.0.1"
 
-htmljs-parser@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/htmljs-parser/-/htmljs-parser-2.3.2.tgz#1cc5bf9824a091c28820b33eaf78083a8eaa856c"
+htmljs-parser@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/htmljs-parser/-/htmljs-parser-2.7.1.tgz#405c40fd617bf25314828a3f1ecf9327c67dda4f"
+  integrity sha512-zdxG/Ou/MLJhF/zjj74fP6Kq8jsJfgZo0uEGgD9yGawpXOPyaUWBR7mIhrUxi1zjk20Z5wyrJAoWcOseBzyw6A==
   dependencies:
     char-props "^0.1.5"
     complain "^1.0.0"
@@ -3968,41 +3986,36 @@ marko-loader@^1.3.2:
   dependencies:
     loader-utils "^1.0.3"
 
-marko@^4.7.4:
-  version "4.7.4"
-  resolved "https://registry.yarnpkg.com/marko/-/marko-4.7.4.tgz#7f6ed200cb0934dc6bd8b345093d91846dd13133"
+marko@^4.18.35:
+  version "4.18.35"
+  resolved "https://registry.yarnpkg.com/marko/-/marko-4.18.35.tgz#bdb4a450516a29f00416eb7474f597f33c6bcd2f"
+  integrity sha512-dOWK0MIsLZlB3Y3J71pOSylck40z+SHEzrjN6jdf7b3Vn94lSsCeCRfBho0K+hIitMNd0VcsMWhDQhKmwLTuqQ==
   dependencies:
     app-module-path "^2.2.0"
     argly "^1.0.0"
     browser-refresh-client "^1.0.0"
+    camelcase "^5.0.0"
     char-props "~0.1.5"
-    complain "^1.2.0"
+    complain "^1.6.0"
     deresolve "^1.1.2"
     escodegen "^1.8.1"
     esprima "^4.0.0"
-    estraverse "^4.2.0"
-    events "^1.0.2"
+    estraverse "^4.3.0"
     events-light "^1.0.0"
     he "^1.1.0"
-    htmljs-parser "^2.3.2"
+    htmljs-parser "^2.7.1"
     lasso-caching-fs "^1.0.1"
     lasso-modules-client "^2.0.4"
     lasso-package-root "^1.0.1"
     listener-tracker "^2.0.0"
     minimatch "^3.0.2"
-    object-assign "^4.1.0"
     property-handlers "^1.0.0"
-    raptor-json "^1.0.1"
-    raptor-polyfill "^1.0.0"
-    raptor-promises "^1.0.1"
     raptor-regexp "^1.0.0"
     raptor-util "^3.2.0"
     resolve-from "^2.0.0"
-    shorthash "0.0.2"
     simple-sha1 "^2.1.0"
     strip-json-comments "^2.0.1"
-    try-require "^1.2.1"
-    warp10 "^1.0.0"
+    warp10 "^2.0.1"
 
 matcher@^1.0.0:
   version "1.0.0"
@@ -5051,7 +5064,7 @@ punycode@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.0.tgz#5f863edc89b96db09074bad7947bf09056ca4e7d"
 
-q@^1.0.1, q@^1.1.2:
+q@^1.1.2:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
 
@@ -5102,36 +5115,13 @@ raptor-async@^1.1.2:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/raptor-async/-/raptor-async-1.1.3.tgz#b83c3c9b603dc985c2c3a9f78d2b4073e6f6024c"
 
-raptor-json@^1.0.1:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/raptor-json/-/raptor-json-1.1.0.tgz#70bd09b14e64f7d32ec50cce8377d6029c0f0876"
-  dependencies:
-    raptor-strings "^1.0.0"
-
-raptor-polyfill@^1.0.0, raptor-polyfill@^1.0.1, raptor-polyfill@^1.0.2:
+raptor-polyfill@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/raptor-polyfill/-/raptor-polyfill-1.0.2.tgz#6575bce762540d844056d71cef11662488f513ed"
-
-raptor-promises@^1.0.1:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/raptor-promises/-/raptor-promises-1.0.3.tgz#d576b110e0423654f7fdf1721e28d42e4dc3c0eb"
-  dependencies:
-    q "^1.0.1"
-    raptor-util "^1.0.0"
 
 raptor-regexp@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/raptor-regexp/-/raptor-regexp-1.0.1.tgz#ecf0f66c6671c0cd9f5e48c3705026c5509995c0"
-
-raptor-strings@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/raptor-strings/-/raptor-strings-1.0.2.tgz#92ce2cb0153afe90470d8039a0255b4cf33ab5fc"
-  dependencies:
-    raptor-polyfill "^1.0.1"
-
-raptor-util@^1.0.0:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/raptor-util/-/raptor-util-1.1.2.tgz#f2ee8076a9ae3eae2e65672e46a220074fa2dff3"
 
 raptor-util@^3.2.0:
   version "3.2.0"
@@ -5576,10 +5566,6 @@ shebang-command@^1.2.0:
 shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
-
-shorthash@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/shorthash/-/shorthash-0.0.2.tgz#59b268eecbde59038b30da202bcfbddeb2c4a4eb"
 
 signal-exit@^3.0.0, signal-exit@^3.0.1, signal-exit@^3.0.2:
   version "3.0.2"
@@ -6130,10 +6116,6 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
-try-require@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/try-require/-/try-require-1.2.1.tgz#34489a2cac0c09c1cc10ed91ba011594d4333be2"
-
 tty-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
@@ -6337,9 +6319,10 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-warp10@^1.0.0:
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/warp10/-/warp10-1.3.6.tgz#edffff4f06382d2e469ba88ccfcb95bb81d3bda6"
+warp10@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/warp10/-/warp10-2.0.1.tgz#a21936d53f152a6003ce49bae85c8758c54c3d2c"
+  integrity sha512-nS1KG2RCVTWepfSitZKzL+HYiqqMJag06KtOJF/LwklrJWeJYRWHjMYpd6GXMt09ot+HIEj+Y4dmQNnNNE0Bjg==
 
 watchpack@^1.4.0:
   version "1.4.0"
